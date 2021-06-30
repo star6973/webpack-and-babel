@@ -1,0 +1,23 @@
+{
+  "name": "webpack-and-babel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/star6973/webpack-and-babel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/star6973/webpack-and-babel/issues"
+  },
+  "homepage": "https://github.com/star6973/webpack-and-babel#readme",
+  "devDependencies": {
+    "webpack": "^5.41.1",
+    "webpack-cli": "^4.7.2"
+  }
+}
