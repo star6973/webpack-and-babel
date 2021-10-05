@@ -1,21 +1,53 @@
-const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const port = process.env.PORT || 3000;
 
 module.exports = {
-    mode: "development",
-    entry: "./source/index.js",
+    // 개발환경
+    mode: 'development',
+
+    // 애플리케이션 시작 경로
+    entry: './src/index.js',
+
+    // 번들된 파일 경로
     output: {
-        path: path.resolve(__dirname, "public"),
-        filename: "index_bundle.js"
+        filename: 'bundle.[hash].js',
     },
+
     module: {
         rules: [
             {
-                test: /\.css$/, // 확장자가 css 파일만을 확인하는 정규표현식
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                },
+            },
+
+            {
+                test: /\.html$/,
                 use: [
-                    'style-loader', // 가져온 css 파일 코드를 웹페이지 안에 style tag로 주입해주는 loader
-                    'css-loader' // css 파일을 읽어와서 webpack으로 가져오는 loader
-                ]
-            }
-        ]
-    }
-}
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            minimize: true,
+                        },
+                    },
+                ],
+            },
+        ],
+    },
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: 'public/index.html',
+        }),
+    ],
+
+    // 개발 서버 설정
+    devServer: {
+        host: 'localhost',
+        port: port,
+        open: true, // open page when start
+    },
+};
