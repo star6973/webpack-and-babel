@@ -1,7 +1,8 @@
 import React from 'react';
+import Console from './components/Console';
 
 function App() {
-    return <div className="App"></div>;
+    return <Console />;
 }
 
 export default App;
